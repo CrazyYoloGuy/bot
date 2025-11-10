@@ -1,26 +1,44 @@
 {
-  "name": "discord-bot",
+  "name": "padoo-delivery-app",
   "version": "1.0.0",
-  "description": "A Discord bot with handlers using discord.js v14",
-  "main": "index.js",
+  "description": "A modern delivery tracking application",
+  "main": "server.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "node index.js",
-    "deploy": "node deploy-commands.js",
-    "invite": "node generate-invite.js"
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "landing": "echo \"🏠 Landing Page: http://localhost:3000/\" && echo \"📱 Install the PWA from your browser!\"",
+    "open": "echo \"Available URLs:\" && echo \"🏠 Landing Page: http://localhost:3000/\" && echo \"🔐 Login: http://localhost:3000/login\" && echo \"📱 Driver App: http://localhost:3000/app\" && echo \"🏪 Shop: http://localhost:3000/shop\" && echo \"📊 Dashboard: http://localhost:3000/dashboard\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "discord",
-    "bot",
-    "discord.js"
+    "delivery",
+    "tracking",
+    "express",
+    "supabase"
   ],
-  "author": "",
-  "license": "ISC",
+  "author": "Your Name",
+  "license": "MIT",
   "dependencies": {
     "@supabase/supabase-js": "^2.39.0",
-    "axios": "^1.12.2",
-    "discord.js": "^14.14.1",
+    "bcryptjs": "^3.0.2",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
     "dotenv": "^16.3.1",
-    "sharp": "^0.34.4"
-  }
+    "express": "^4.18.2",
+    "pg": "^8.16.0",
+    "uuid": "^11.1.0",
+    "web-push": "^3.6.7",
+    "ws": "^8.14.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/example/driveflow-delivery-app.git"
+  },
+  "bugs": {
+    "url": "https://github.com/example/driveflow-delivery-app/issues"
+  },
+  "homepage": "https://github.com/example/driveflow-delivery-app#readme"
 }

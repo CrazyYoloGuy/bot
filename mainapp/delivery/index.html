@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+    <title>Padoo Delivery - Driver Dashboard</title>
+
+    <!-- PWA Meta Tags -->
+    <meta name="description" content="Driver dashboard for delivery management system">
+    <meta name="theme-color" content="#10b981">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Driver App">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Driver App">
+
+    <!-- Mobile App Switcher -->
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-TileColor" content="#10b981">
+    <meta name="msapplication-TileImage" content="/plogo.png">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-oriented" content="portrait">
+
+    <!-- Prevent browser branding in app switcher -->
+    <meta name="mobile-web-app-title" content="Driver App">
+    <meta name="apple-mobile-web-app-title" content="Driver App">
+    <meta name="msapplication-tooltip" content="Delivery Driver Dashboard">
+    <meta name="msapplication-starturl" content="/app">
+    <meta name="msapplication-navbutton-color" content="#10b981">
+    <meta name="msapplication-window" content="width=1024;height=768">
+
+    <!-- Android Chrome -->
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#10b981">
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#059669">
+
+    <!-- Force standalone mode -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="msapplication-navbutton-color" content="#10b981">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Icons -->
+    <link rel="icon" href="/plogo.png">
+    <link rel="apple-touch-icon" href="/plogo.png">
+
+    <!-- Standalone Mode Styles -->
+    <link rel="stylesheet" href="/standalone-mode.css">
+
+    <!-- CSS Files with Cache Busting -->
+    <link rel="stylesheet" href="/mainapp/delivery/css/styles.css?v=2025090401">
+    <link rel="stylesheet" href="/mainapp/delivery/css/home.css?v=2025090401">
+    <link rel="stylesheet" href="/mainapp/delivery/css/orders.css?v=2025090401">
+    <link rel="stylesheet" href="/mainapp/delivery/css/settings.css?v=2025090401">
+    <link rel="stylesheet" href="/mainapp/delivery/css/profile.css?v=2025090401">
+    <link rel="stylesheet" href="/mainapp/delivery/css/modals.css?v=2025090401">
+    <link rel="stylesheet" href="/mainapp/delivery/css/notifications.css?v=2025090401">
+
+    <!-- External CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Immediate Modern UI Enhancements -->
+    <style>
+        @keyframes pulse-badge {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3), 0 0 0 1px rgba(239, 68, 68, 0.1);
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 6px 16px rgba(239, 68, 68, 0.4), 0 0 0 2px rgba(239, 68, 68, 0.2);
+            }
+        }
+
+        /* Enhanced hover effects for navigation */
+        .nav-item:hover {
+            background: rgba(255, 107, 53, 0.08) !important;
+            color: #ff6b35 !important;
+            transform: translateY(-3px) scale(1.02) !important;
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.15) !important;
+        }
+
+        .nav-item:hover i {
+            transform: scale(1.1) !important;
+            filter: drop-shadow(0 2px 6px rgba(255, 107, 53, 0.3)) !important;
+        }
+
+        /* Enhanced header logo hover */
+        .header-logo:hover {
+            transform: scale(1.05) rotate(5deg) !important;
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.2) !important;
+        }
+
+        /* Active nav item indicator */
+        .nav-item.active::after {
+            content: '';
+            position: absolute;
+            top: -16px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 28px;
+            height: 4px;
+            background: linear-gradient(90deg, #ff6b35, #ff8f65);
+            border-radius: 2px;
+            box-shadow: 0 2px 8px rgba(255, 107, 53, 0.4);
+        }
+    </style>
+</head>
+<body class="driver-app">
+    <div id="app">
+        <!-- Professional Driver App Header -->
+        <header class="app-header" style="
+            background: #ff6b35;
+            padding: 16px 20px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid #e55a2b;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        ">
+            <!-- Header Content -->
+            <div style="
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+            ">
+                <!-- Logo and Title -->
+                <div style="
+                    display: flex;
+                    align-items: center;
+                    gap: 12px;
+                ">
+                    <div class="header-logo" style="
+                        width: 40px;
+                        height: 40px;
+                        border-radius: 8px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        overflow: hidden;
+                    ">
+                        <img src="/plogo.png" alt="Padoo Delivery" style="
+                            width: 100%;
+                            height: 100%;
+                            object-fit: contain;
+                            border-radius: 6px;
+                        ">
+                    </div>
+                    <div>
+                        <h1 class="app-title" style="
+                            font-size: 20px;
+                            font-weight: 700;
+                            color: #ffffff;
+                            margin: 0;
+                            letter-spacing: -0.2px;
+                        " data-translate="appTitle">Padoo Delivery</h1>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Home Page -->
+        <div id="home-page" class="page active">
+            <div class="page-header">
+                <div class="header-content">
+                    <h2 data-translate="driverDashboard">Driver Dashboard</h2>
+                    <div class="header-date">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span id="current-date"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Stats -->
+            <div class="quick-stats">
+                <div class="stat-card earnings">
+                    <div class="stat-icon">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="total-earnings">$0.00</h3>
+                        <p data-translate="totalEarnings">Total Earnings</p>
+                    </div>
+                </div>
+
+                <div class="stat-card orders">
+                    <div class="stat-icon">
+                        <i class="fas fa-box"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="total-orders">0</h3>
+                        <p data-translate="totalOrders">Total Orders</p>
+                    </div>
+                </div>
+
+                <div class="stat-card today">
+                    <div class="stat-icon">
+                        <i class="fas fa-calendar-day"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="today-orders">0</h3>
+                        <p data-translate="todaysOrders">Today's Orders</p>
+                    </div>
+                </div>
+
+                <div class="stat-card shops">
+                    <div class="stat-icon">
+                        <i class="fas fa-store"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="total-shops">0</h3>
+                        <p>Partner Shops</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="quick-actions">
+                <h3 class="section-title">
+                    <i class="fas fa-zap"></i>
+                    <span data-translate="quickActions">Quick Actions</span>
+                </h3>
+                <div class="action-cards">
+                    <div class="action-card" data-action="add-order">
+                        <div class="action-icon">
+                            <i class="fas fa-plus"></i>
+                        </div>
+                        <div class="action-content">
+                            <h4 data-translate="addNewOrder">Add New Order</h4>
+                            <p data-translate="recordDelivery">Record a new delivery order</p>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="recent-activity-section">
+                <h3 class="section-title">
+                    <i class="fas fa-history"></i>
+                    <span data-translate="recentActivity">Recent Activity</span>
+                </h3>
+                <div id="recent-activity"></div>
+            </div>
+        </div>
+
+        <!-- Orders Page -->
+        <div id="orders-page" class="page">
+            <div class="page-header">
+                <h2 data-translate="allOrders">My Orders</h2>
+                <div class="orders-filters">
+                    <button class="filter-btn active" data-filter="all" data-translate="all">All</button>
+                    <button class="filter-btn" data-filter="today" data-translate="today">Today</button>
+                    <button class="filter-btn" data-filter="week" data-translate="week">This Week</button>
+                    <button class="filter-btn" data-filter="month" data-translate="month">This Month</button>
+                </div>
+            </div>
+
+            <div id="orders-container"></div>
+        </div>
+
+        <!-- Notifications Page -->
+        <div id="notifications-page" class="page">
+
+            <div class="notifications-container">
+                <div id="notifications-list" class="notifications-list">
+                    <div class="loading">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        <span data-translate="loading">Loading notifications...</span>
+                    </div>
+                </div>
+
+                <div id="no-notifications" class="no-data-message" style="display: none;">
+                    <i class="fas fa-bell-slash"></i>
+                    <h3 data-translate="noNotifications">No Notifications</h3>
+                    <p data-translate="notificationsWillAppear">You don't have any notifications yet.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Page -->
+        <div id="recent-page" class="page">
+            <div class="page-header">
+                <h2 data-translate="recentOrders">Recent Orders</h2>
+            </div>
+
+            <div class="recent-container">
+                <div id="recent-orders-content">
+                    <!-- Recent orders will be loaded here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Profile Page -->
+        <div id="profile-page" class="page">
+            <div class="profile-container">
+                <!-- Profile content will be loaded here -->
+            </div>
+        </div>
+
+        <!-- Driver Announcements Page -->
+        <div id="driver-announcements-page" class="page">
+            <div class="page-header">
+                <div class="header-content">
+                    <h2><i class="fas fa-bullhorn"></i> Announcements</h2>
+                </div>
+            </div>
+            <div class="announcements-container">
+                <div id="driver-announcements-list"></div>
+            </div>
+        </div>
+
+        <!-- Driver Analytics Page -->
+        <div id="driver-analytics-page" class="page">
+            <div class="page-header">
+                <div class="header-content">
+                    <h2><i class="fas fa-chart-line"></i> Analytics</h2>
+                </div>
+            </div>
+            <div class="analytics-container">
+                <div id="driver-analytics-controls"></div>
+                <div id="driver-analytics-summary"></div>
+            </div>
+        </div>
+
+
+        <!-- Enhanced Modern Bottom Navigation -->
+        <div class="bottom-nav" style="
+            background: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(24px) !important;
+            -webkit-backdrop-filter: blur(24px) !important;
+            border-top: 1px solid rgba(229, 231, 235, 0.6) !important;
+            padding: 16px 12px 24px 12px !important;
+            box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.08), 0 -1px 0px rgba(255, 255, 255, 0.05) inset !important;
+            border-radius: 28px 28px 0 0 !important;
+            margin: 0 -1px !important;
+        ">
+            <button class="nav-item active" data-page="home" style="
+                padding: 12px 16px !important;
+                border-radius: 18px !important;
+                font-size: 11px !important;
+                font-weight: 600 !important;
+                letter-spacing: 0.3px !important;
+                text-transform: uppercase !important;
+                transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+                background: linear-gradient(135deg, rgba(255, 107, 53, 0.12), rgba(255, 139, 101, 0.08)) !important;
+                color: #ff6b35 !important;
+                transform: translateY(-2px) !important;
+                box-shadow: 0 6px 20px rgba(255, 107, 53, 0.2), 0 0 0 1px rgba(255, 107, 53, 0.1) inset !important;
+            ">
+                <i class="fas fa-home" style="
+                    font-size: 22px !important;
+                    margin-bottom: 6px !important;
+                    transform: scale(1.1) !important;
+                    filter: drop-shadow(0 2px 6px rgba(255, 107, 53, 0.3)) !important;
+                "></i>
+                <span data-translate="home">Home</span>
+            </button>
+            <button class="nav-item" data-page="notifications" style="
+                padding: 12px 16px !important;
+                border-radius: 18px !important;
+                font-size: 11px !important;
+                font-weight: 600 !important;
+                letter-spacing: 0.3px !important;
+                text-transform: uppercase !important;
+                transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+                color: #6b7280 !important;
+            ">
+                <i class="fas fa-shopping-bag" style="
+                    font-size: 22px !important;
+                    margin-bottom: 6px !important;
+                "></i>
+                <span data-translate="orders">Orders</span>
+                <span id="notification-badge" class="notification-badge" style="
+                    display: none;
+                    position: absolute !important;
+                    top: -4px !important;
+                    right: 6px !important;
+                    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%) !important;
+                    color: white !important;
+                    border-radius: 50% !important;
+                    width: 22px !important;
+                    height: 22px !important;
+                    font-size: 11px !important;
+                    font-weight: 800 !important;
+                    border: 3px solid rgba(255, 255, 255, 0.9) !important;
+                    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3), 0 0 0 1px rgba(239, 68, 68, 0.1) !important;
+                    animation: pulse-badge 2s infinite !important;
+                ">0</span>
+            </button>
+            <button class="nav-item" data-page="orders" style="
+                padding: 12px 16px !important;
+                border-radius: 18px !important;
+                font-size: 11px !important;
+                font-weight: 600 !important;
+                letter-spacing: 0.3px !important;
+                text-transform: uppercase !important;
+                transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+                color: #6b7280 !important;
+            ">
+                <i class="fas fa-history" style="
+                    font-size: 22px !important;
+                    margin-bottom: 6px !important;
+                "></i>
+                <span data-translate="history">History</span>
+            </button>
+            <button class="nav-item" data-page="recent" style="
+                padding: 12px 16px !important;
+                border-radius: 18px !important;
+                font-size: 11px !important;
+                font-weight: 600 !important;
+                letter-spacing: 0.3px !important;
+                text-transform: uppercase !important;
+                transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+                color: #6b7280 !important;
+            ">
+                <i class="fas fa-clock" style="
+                    font-size: 22px !important;
+                    margin-bottom: 6px !important;
+                "></i>
+                <span data-translate="recent">Recent</span>
+            </button>
+            <button class="nav-item" data-page="profile" style="
+                padding: 12px 16px !important;
+                border-radius: 18px !important;
+                font-size: 11px !important;
+                font-weight: 600 !important;
+                letter-spacing: 0.3px !important;
+                text-transform: uppercase !important;
+                transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+                color: #6b7280 !important;
+            ">
+                <i class="fas fa-user" style="
+                    font-size: 22px !important;
+                    margin-bottom: 6px !important;
+                "></i>
+                <span data-translate="profile">Profile</span>
+            </button>
+        </div>
+
+
+    </div>
+
+    <!-- Toast Container -->
+    <div id="toast-container"></div>
+
+    <!-- Order Details Modal -->
+    <div id="order-details-modal" onclick="deliveryApp.closeOrderDetailsModal()" style="
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.8);
+        z-index: 99999;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+    ">
+        <div onclick="event.stopPropagation()" style="
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 500px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+        ">
+            <div style="
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 20px;
+                border-bottom: 1px solid #e5e7eb;
+                background: #f8fafc;
+            ">
+                <h3 id="order-details-title" style="margin: 0; color: #111827; font-size: 18px; font-weight: 700;">Order Details</h3>
+                <button onclick="deliveryApp.closeOrderDetailsModal()" style="
+                    background: none;
+                    border: none;
+                    font-size: 18px;
+                    color: #6b7280;
+                    cursor: pointer;
+                    padding: 4px;
+                    border-radius: 4px;
+                    transition: all 0.2s ease;
+                " onmouseover="this.style.background='#e5e7eb'; this.style.color='#111827'" onmouseout="this.style.background='none'; this.style.color='#6b7280'">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div id="order-details-content">
+                <!-- Content will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Translation System -->
+    <script src="/mainapp/delivery/js/translations.js"></script>
+    <script src="/mainapp/delivery/js/app.js"></script>
+
+    <!-- Standalone Mode Enforcer -->
+    <script src="/standalone-enforcer.js"></script>
+    <script src="/standalone-detector.js"></script>
+
+    <!-- PWA Script -->
+    <script src="/pwa-utils.js"></script>
+</body>
+</html>

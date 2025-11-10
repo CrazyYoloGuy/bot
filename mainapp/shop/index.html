@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+    <title>Padoo Delivery - Shop Dashboard</title>
+
+    <!-- PWA Meta Tags -->
+    <meta name="description" content="Shop dashboard for delivery management system">
+    <meta name="theme-color" content="#f59e0b">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Shop App">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Shop App">
+
+    <!-- Mobile App Switcher -->
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-TileColor" content="#f59e0b">
+    <meta name="msapplication-TileImage" content="/icons/plogo.png">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-oriented" content="portrait">
+
+    <!-- Prevent browser branding in app switcher -->
+    <meta name="mobile-web-app-title" content="Shop App">
+    <meta name="apple-mobile-web-app-title" content="Shop App">
+    <meta name="msapplication-tooltip" content="Shop Management Dashboard">
+    <meta name="msapplication-starturl" content="/shop">
+    <meta name="msapplication-navbutton-color" content="#f59e0b">
+    <meta name="msapplication-window" content="width=1024;height=768">
+
+    <!-- Android Chrome -->
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f59e0b">
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#d97706">
+
+    <!-- Force standalone mode -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="msapplication-navbutton-color" content="#f59e0b">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Icons -->
+    <link rel="icon" href="/icons/plogo.png">
+    <link rel="apple-touch-icon" href="/icons/plogo.png">
+
+    <!-- Standalone Mode Styles -->
+    <link rel="stylesheet" href="/standalone-mode.css">
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="/mainapp/shop/css/styles.css">
+    <link rel="stylesheet" href="/mainapp/shop/css/alerts.css">
+    <link rel="stylesheet" href="/mainapp/shop/css/settings.css">
+    <link rel="stylesheet" href="/mainapp/shop/css/profile.css">
+
+    <!-- External CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="shop-app">
+    <div id="app">
+        <!-- Professional Shop App Header -->
+        <header class="app-header" style="
+            background: #ffffff;
+            padding: 16px 20px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid #e5e7eb;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        ">
+            <!-- Header Content -->
+            <div style="
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+            ">
+                <!-- Logo and Title -->
+                <div style="
+                    display: flex;
+                    align-items: center;
+                    gap: 12px;
+                ">
+                    <div class="header-logo" style="
+                        width: 40px;
+                        height: 40px;
+                        border-radius: 8px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        overflow: hidden;
+                    ">
+                        <img src="/icons/plogo.png" alt="Padoo Delivery" style="
+                            width: 100%;
+                            height: 100%;
+                            object-fit: contain;
+                            border-radius: 6px;
+                        ">
+                    </div>
+                    <div>
+                        <h1 class="app-title" style="
+                            font-size: 20px;
+                            font-weight: 700;
+                            color: #1f2937;
+                            margin: 0;
+                            letter-spacing: -0.2px;
+                        ">Shop Dashboard</h1>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Alerts Page -->
+        <div id="alerts-page" class="page active">
+            <div class="page-header">
+                <div class="header-content">
+                    <h2><span data-translate="teamMembersManagement">Team Members Management</span></h2>
+                    <div class="header-badge">
+                        <span class="notification-count">0</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="coming-soon">
+                <div class="coming-soon-icon">
+                    <i class="fas fa-bell"></i>
+                </div>
+                <h3>Coming Soon</h3>
+                <p>Notification system is under development</p>
+            </div>
+        </div>
+
+        <!-- Notifications Page -->
+        <div id="notifications-page" class="page">
+            <div class="page-header">
+                <div class="header-content">
+                    <h2>Notifications</h2>
+                    <div class="header-badge">
+                        <span class="notification-count">0</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="coming-soon">
+                <div class="coming-soon-icon">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <h3>Loading...</h3>
+                <p>Notification history is loading</p>
+            </div>
+        </div>
+
+        <!-- Settings Page -->
+        <div id="settings-page" class="page">
+            <div class="page-header">
+                <h2>Shop Settings</h2>
+            </div>
+
+            <div class="coming-soon">
+                <div class="coming-soon-icon">
+                    <i class="fas fa-cog"></i>
+                </div>
+                <h3>Coming Soon</h3>
+                <p>Shop settings panel is under development</p>
+            </div>
+        </div>
+
+        <!-- History Page -->
+        <div id="orders-page" class="page">
+            <div class="page-header">
+                <div class="header-content">
+                    <h2><span data-translate="history">Order History</span></h2>
+                </div>
+            </div>
+
+            <!-- Completed Orders Section -->
+            <div class="page-content" style="padding: 20px;">
+                <div style="
+                    background: #ffffff;
+                    border-radius: 12px;
+                    border: 1px solid #e5e7eb;
+                    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+                    overflow: hidden;
+                ">
+                    <!-- Header -->
+                    <div style="
+                        padding: 16px 20px;
+                        border-bottom: 1px solid #e5e7eb;
+                        background: #f8fafc;
+                        display: flex;
+                        align-items: center;
+                        gap: 12px;
+                    ">
+                        <div style="
+                            width: 40px;
+                            height: 40px;
+                            background: #dcfce7;
+                            border-radius: 10px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                        ">
+                            <i class="fas fa-history" style="color: #16a34a; font-size: 18px;"></i>
+                        </div>
+                        <div>
+                            <h3 style="margin: 0; font-size: 18px; font-weight: 700; color: #111827;"><span data-translate="completedOrders">Completed Orders</span></h3>
+                            <p style="margin: 0; font-size: 14px; color: #6b7280;"><span data-translate="allDeliveredOrdersWithDriverInfo">All delivered orders with driver information</span></p>
+                        </div>
+                    </div>
+
+                    <!-- Orders Content -->
+                    <div id="shop-orders-content" style="padding: 20px;">
+                        <!-- Completed orders will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Analytics Page -->
+        <div id="analytics-page" class="page">
+            <div class="page-header">
+                <div class="header-content">
+                    <h2>Analytics</h2>
+                </div>
+            </div>
+            <div class="analytics-container">
+                <div id="analytics-controls" style="padding: 12px 20px;"></div>
+                <div id="analytics-summary" style="padding: 0 20px 12px 20px;"></div>
+                <div id="analytics-orders" style="padding: 12px 20px 20px 20px;"></div>
+            </div>
+        </div>
+
+
+        <!-- Profile Page -->
+        <div id="profile-page" class="page">
+            <div class="page-header">
+                <h2 data-translate="profileTitle">Shop Profile</h2>
+            </div>
+
+            <div class="profile-container">
+                <div class="profile-card">
+                    <div class="profile-header">
+                        <div class="profile-avatar">
+                            <i class="fas fa-store"></i>
+                        </div>
+                        <div class="profile-info">
+                            <h3 id="profile-shop-name">Shop Name</h3>
+                            <p id="profile-email">shop@example.com</p>
+                        </div>
+                    </div>
+
+                    <div class="profile-actions">
+                        <button class="btn primary" id="change-password-btn">
+                            <i class="fas fa-key"></i>
+                            <span data-translate="changePassword">Change Password</span>
+                        </button>
+
+                        <button class="btn secondary logout-btn">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span data-translate="logout">Logout</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+        </div>
+
+        <!-- Announcements Page -->
+        <div id="announcements-page" class="page">
+            <div class="page-header">
+                <div class="header-content" style="display: flex; align-items: center; gap: 16px;">
+                    <button onclick="shopApp.navigateToPage('profile')" style="
+                        background: none;
+                        border: none;
+                        color: #6b7280;
+                        font-size: 20px;
+                        cursor: pointer;
+                        padding: 8px;
+                        border-radius: 8px;
+                        transition: all 0.2s;
+                    " onmouseover="this.style.backgroundColor='#f3f4f6'; this.style.color='#374151';" onmouseout="this.style.backgroundColor='transparent'; this.style.color='#6b7280';">
+                        <i class="fas fa-arrow-left"></i>
+                    </button>
+                    <h2 style="margin: 0;">Announcements</h2>
+                </div>
+            </div>
+
+            <div class="announcements-container" style="padding: 20px; max-width: 600px; margin: 0 auto;">
+                <div class="announcements-content" style="
+                    background: white;
+                    border-radius: 16px;
+                    padding: 32px 24px;
+                    text-align: center;
+                    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+                    border: 1px solid #f1f5f9;
+                ">
+                    <div style="
+                        width: 80px;
+                        height: 80px;
+                        background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+                        border-radius: 50%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        margin: 0 auto 24px;
+                        box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+                    ">
+                        <i class="fas fa-bullhorn" style="font-size: 32px; color: white;"></i>
+                    </div>
+
+                    <h3 style="
+                        font-size: 24px;
+                        font-weight: 700;
+                        color: #111827;
+                        margin: 0 0 16px 0;
+                    ">Announcements</h3>
+
+                    <p style="
+                        font-size: 16px;
+                        color: #6b7280;
+                        line-height: 1.6;
+                        margin: 0 0 24px 0;
+                    ">Future announcements from admins will be displayed here. Stay tuned for important updates and notifications!</p>
+
+                    <div style="
+                        background: #f8fafc;
+                        border: 1px solid #e2e8f0;
+                        border-radius: 12px;
+                        padding: 16px;
+                        margin-top: 24px;
+                    ">
+                        <div style="
+                            display: flex;
+                            align-items: center;
+                            gap: 12px;
+                            margin-bottom: 8px;
+                        ">
+                            <i class="fas fa-info-circle" style="color: #3b82f6; font-size: 18px;"></i>
+                            <span style="
+                                font-weight: 600;
+                                color: #1e293b;
+                                font-size: 14px;
+                            ">Coming Soon</span>
+                        </div>
+                        <p style="
+                            font-size: 14px;
+                            color: #64748b;
+                            margin: 0;
+                            line-height: 1.5;
+                        ">This feature is currently under development. You'll receive notifications when new announcements are available.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dashboard Page (Orders with Create + Recent Orders) -->
+        <div id="dashboard-page" class="page">
+            <div class="page-header">
+                <h2><span data-translate="orders">Orders</span></h2>
+                <p style="color: #6b7280; font-size: 14px; margin: 8px 0 0 0;"><span data-translate="manageYourDeliveryOrders">Manage your delivery orders</span></p>
+            </div>
+
+            <div class="page-content" style="padding: 20px;">
+                <!-- Content will be loaded by JavaScript -->
+            </div>
+        </div>
+
+        <!-- Bottom Navigation -->
+        <div class="bottom-nav">
+            <button class="nav-item active" data-page="alerts">
+                <i class="fas fa-users"></i>
+                <span data-translate="teamMembers">Team Members</span>
+            </button>
+            <button class="nav-item" data-page="orders">
+                <i class="fas fa-history"></i>
+                <span data-translate="history">History</span>
+            </button>
+            <button class="nav-item" data-page="dashboard">
+                <i class="fas fa-shopping-bag"></i>
+                <span data-translate="orders">Orders</span>
+            </button>
+            <button class="nav-item" data-page="settings">
+                <i class="fas fa-cog"></i>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        try {
+          if (window.i18n) {
+            if (typeof window.i18n.init === 'function') window.i18n.init();
+            const display = document.getElementById('current-language-display');
+            const updateDisplay = (lang) => {
+              if (display) display.textContent = (lang === 'gr') ? 'Ελληνικά' : 'English';
+              const enBtn = document.getElementById('lang-en');
+              const grBtn = document.getElementById('lang-gr');
+              if (enBtn && grBtn) {
+                enBtn.classList.toggle('active', lang === 'en');
+                grBtn.classList.toggle('active', lang === 'gr');
+              }
+            };
+            const currentLang = (window.i18n.getCurrentLanguage && window.i18n.getCurrentLanguage()) || localStorage.getItem('app_language') || 'en';
+            updateDisplay(currentLang);
+            if (typeof window.i18n.addObserver === 'function') window.i18n.addObserver(updateDisplay);
+          }
+          const en = document.getElementById('lang-en');
+          const gr = document.getElementById('lang-gr');
+          if (en) en.addEventListener('click', () => window.i18n && window.i18n.setLanguage('en'));
+          if (gr) gr.addEventListener('click', () => window.i18n && window.i18n.setLanguage('gr'));
+        } catch (e) { console.warn('Language init error', e); }
+      });
+    </script>
+
+                <span data-translate="settings">Settings</span>
+            </button>
+            <button class="nav-item" data-page="profile">
+                <i class="fas fa-user"></i>
+                <span data-translate="profile">Profile</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div id="toast-container"></div>
+
+    <script src="/mainapp/delivery/js/translations.js"></script>
+
+    <script src="/mainapp/shop/js/app.js"></script>
+
+    <!-- Standalone Mode Enforcer -->
+    <script src="/standalone-enforcer.js"></script>
+    <script src="/standalone-detector.js"></script>
+
+    <!-- PWA Script -->
+    <script src="/pwa-utils.js"></script>
+</body>
+</html>
